@@ -51,4 +51,5 @@ function main() {
   })();
 }
 
+console.log('Webhook started');
 main();
