@@ -1,0 +1,18 @@
+{
+  "morning": {
+    "hour": 8,
+    "minute": 30
+  },
+  "lunch": {
+    "hour": 12,
+    "minute": 0
+  },
+  "standup": {
+    "hour": 17,
+    "minute": 0
+  },
+  "night": {
+    "hour": 18,
+    "minute": 0
+  }
+}
