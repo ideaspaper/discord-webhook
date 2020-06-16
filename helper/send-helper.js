@@ -31,5 +31,8 @@ module.exports = {
   },
   sendQuote: (quote, author) => {
     webhookClient.send(`> **${quote}** - _${author}_`);
+  },
+  sendJoke: (message) => {
+    webhookClient.send(`_${message}_`);
   }
 }

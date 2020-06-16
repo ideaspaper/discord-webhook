@@ -7,6 +7,10 @@
     "hour": 12,
     "minute": 0
   },
+  "joke": {
+    "hour": 14,
+    "minute": 42
+  },
   "standup": {
     "hour": 17,
     "minute": 0
