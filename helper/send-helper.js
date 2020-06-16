@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
-const config = require('./config.json');
+const config = require('../config.json');
 
 const webhookClient = new Discord.WebhookClient(config.webhookID, config.webhookToken);
 
@@ -28,5 +28,8 @@ module.exports = {
   },
   sendMessage: (message) => {
     webhookClient.send(message);
+  },
+  sendQuote: (quote, author) => {
+    webhookClient.send(`> **${quote}** - _${author}_`);
   }
 }
