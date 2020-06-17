@@ -1,8 +1,10 @@
 const sqlite3 = require('sqlite3');
+const path = require('path');
+const { dbName } = require('./../config.json');
 
 function getCount() {
   return new Promise((resolve, reject) => {
-    const db = new sqlite3.Database('./webhook.db');
+    const db = new sqlite3.Database(path.join(__dirname, '..', dbName));
     const sql = 'SELECT count(*) FROM quotes';
     db.get(sql, [], (err, row) => {
       if (err) {
@@ -27,7 +29,7 @@ function getRandomId() {
 
 function getQuote() {
   return new Promise((resolve, reject) => {
-    const db = new sqlite3.Database('./webhook.db');
+    const db = new sqlite3.Database(path.join(__dirname, '..', dbName));
     getRandomId()
       .then((id) => {
         const sql = `SELECT quote, author FROM quotes WHERE id = ${id}`;

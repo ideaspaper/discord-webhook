@@ -2,5 +2,6 @@
   "webhookID": "",
   "webhookToken": "",
   "webhookName": "",
-  "tenorKey": ""
+  "tenorKey": "",
+  "dbName": ""
 }

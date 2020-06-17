@@ -1,8 +1,10 @@
 const sqlite3 = require('sqlite3');
+const path = require('path');
+const { dbName } = require('./../config.json');
 
 function getCount(topic) {
   return new Promise((resolve, reject) => {
-    let db = new sqlite3.Database('./webhook.db');
+    let db = new sqlite3.Database(path.join(__dirname, '..', dbName));
     let sql = `SELECT count(*) FROM messages WHERE topic like '%${topic}%'`;
     db.get(sql, [], (err, row) => {
       if (err) {
@@ -27,7 +29,7 @@ function getRandomIndex(topic) {
 
 function getMessage(topic) {
   return new Promise((resolve, reject) => {
-    let db = new sqlite3.Database('./webhook.db');
+    let db = new sqlite3.Database(path.join(__dirname, '..', dbName));
     getRandomIndex(topic)
       .then((index) => {
         let sql = `SELECT message FROM messages WHERE topic like '%${topic}%'`;
