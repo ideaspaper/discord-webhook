@@ -18,7 +18,7 @@ function main() {
         });
       getMessage('morning')
         .then(({ message }) => {
-          sendGif('wakeup', message);
+          sendGif('cat wake up', message);
         })
     } else if (now.getHours() === messageTime.lunch.hour && now.getMinutes() === messageTime.lunch.minute) {
       console.log('Lunch message');
