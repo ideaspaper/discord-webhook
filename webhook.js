@@ -42,7 +42,7 @@ function main() {
       console.log('Night message');
       getMessage('night')
         .then(({ message }) => {
-          sendGif('sleepy', message);
+          sendGif('cat sleep', message);
         });
     }
     now = new Date();
