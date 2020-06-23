@@ -18,7 +18,8 @@ function main() {
         });
       getMessage('morning')
         .then(({ message }) => {
-          sendGif('cat wake up', message);
+          // sendGif('cat wake up', message);
+          sendMessage(message);
         })
     } else if (now.getHours() === messageTime.lunch.hour && now.getMinutes() === messageTime.lunch.minute) {
       console.log('Lunch message');
@@ -42,7 +43,8 @@ function main() {
       console.log('Night message');
       getMessage('night')
         .then(({ message }) => {
-          sendGif('cat sleep', message);
+          // sendGif('cat sleep', message);
+          sendMessage(message);
         });
     }
     now = new Date();
