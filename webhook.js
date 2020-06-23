@@ -25,7 +25,8 @@ function main() {
       console.log('Lunch message');
       getMessage('lunch')
         .then(({ message }) => {
-          sendGif('lunch', message);
+          // sendGif('lunch', message);
+          sendMessage(message);
         });
     } else if (now.getHours() === messageTime.joke.hour && now.getMinutes() === messageTime.joke.minute) {
       console.log('Joke message');
