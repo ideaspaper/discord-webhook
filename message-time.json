@@ -7,7 +7,7 @@
     "hour": 12,
     "minute": 0
   },
-  "joke": {
+  "fact": {
     "hour": 14,
     "minute": 42
   },
@@ -17,6 +17,10 @@
   },
   "night": {
     "hour": 18,
+    "minute": 0
+  },
+  "joke": {
+    "hour": 19,
     "minute": 0
   }
 }

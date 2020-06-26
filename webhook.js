@@ -1,10 +1,12 @@
-const getMessage = require('./helper/message-helper').getMessage;
-const getQuote = require('./helper/quote-helper').getQuote;
-const getJoke = require('./helper/joke-helper').getJoke;
-const sendGif = require('./helper/send-helper').sendGif;
-const sendMessage = require('./helper/send-helper').sendMessage;
-const sendQuote = require('./helper/send-helper').sendQuote;
-const sendJoke = require('./helper/send-helper').sendJoke;
+const { getMessage } = require('./helper/message-helper');
+const { getQuote } = require('./helper/quote-helper');
+const { getJoke } = require('./helper/joke-helper');
+const { getFact } = require('./helper/fact-helper');
+const { sendGif } = require('./helper/send-helper');
+const { sendMessage } = require('./helper/send-helper');
+const { sendQuote } = require('./helper/send-helper');
+const { sendJoke } = require('./helper/send-helper');
+const { sendFact } = require('./helper/send-helper');
 const messageTime = require('./message-time.json');
 
 function main() {
@@ -33,6 +35,12 @@ function main() {
       getJoke()
         .then(({ joke }) => {
           sendJoke(joke);
+        });
+    } else if (now.getHours() === messageTime.fact.hour && now.getMinutes() === messageTime.fact.minute) {
+      console.log('Fact message');
+      getFact()
+        .then(({ fact }) => {
+          sendFact(fact);
         });
     } else if (now.getHours() === messageTime.standup.hour && now.getMinutes() === messageTime.standup.minute) {
       console.log('Stand-up message');

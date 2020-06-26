@@ -2,10 +2,10 @@ const sqlite3 = require('sqlite3');
 const path = require('path');
 const { dbName } = require('./../config.json');
 
-function getCount(topic) {
+function getCount() {
   return new Promise((resolve, reject) => {
-    let db = new sqlite3.Database(path.join(__dirname, '..', dbName));
-    let sql = `SELECT count(*) FROM messages WHERE topic like '%${topic}%'`;
+    const db = new sqlite3.Database(path.join(__dirname, '..', dbName));
+    const sql = 'SELECT count(*) FROM facts';
     db.get(sql, [], (err, row) => {
       if (err) {
         reject(-1);
@@ -16,37 +16,37 @@ function getCount(topic) {
   });
 }
 
-function getRandomIndex(topic) {
+function getRandomId() {
   return new Promise((resolve, reject) => {
-    getCount(topic)
+    getCount()
       .then((count) => {
         count === -1
           ? reject(-1)
-          : resolve(Math.floor(Math.random() * count));
+          : resolve(Math.floor(Math.random() * count) + 1);
       });
   });
 }
 
-function getMessage(topic) {
+function getFact() {
   return new Promise((resolve, reject) => {
-    let db = new sqlite3.Database(path.join(__dirname, '..', dbName));
-    getRandomIndex(topic)
-      .then((index) => {
-        let sql = `SELECT message FROM messages WHERE topic like '%${topic}%'`;
-        if (index === -1) {
+    const db = new sqlite3.Database(path.join(__dirname, '..', dbName));
+    getRandomId()
+      .then((id) => {
+        const sql = `SELECT fact FROM facts WHERE id = ${id}`;
+        if (id === -1) {
           reject(-1);
         }
-        db.all(sql, [], (err, rows) => {
+        db.get(sql, [], (err, row) => {
           if (err) {
             reject(err);
           }
           db.close();
-          resolve(rows[index]);
+          resolve(row);
         });
       });
   });
 }
 
 module.exports = {
-  getMessage
+  getFact
 }

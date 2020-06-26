@@ -34,5 +34,8 @@ module.exports = {
   },
   sendJoke: (message) => {
     webhookClient.send(`_${message}_`);
+  },
+  sendFact: (message) => {
+    webhookClient.send(`Did you know that: _${message}_`);
   }
 }
